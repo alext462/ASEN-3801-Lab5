@@ -2,6 +2,26 @@
 function PlotAircraftSim(time, aircraft_state_array, control_input_array,...
     fig, col)
 
+%{
+Purpose: Plots aircraft states, path, and control surface values with time,
+with each function call plotting over the previous one 
+
+inputs: 
+
+time: length n vector that holds time corresponding to the 
+nth set of variables
+
+aircraft_state_array: 12 x n array of aircraft states
+
+control_input_array: 4 x n array of control surfaces
+
+fig: 6 x 1 vector of figure numbers to plot over
+
+col: string indicating plotting option used for every plot eg. col = 'b-'
+
+outputs: none
+%}
+
 %inertial position
 figure(fig(1));
 subplot(3,1,1);
@@ -20,14 +40,14 @@ ylim(ylim + [-0.1, 0.1]);
 %euler angles
 figure(fig(2));
 subplot(3,1,1);
-plot(time, aircraft_state_array(4,:), col); hold on; grid on;
+plot(time, aircraft_state_array(4,:)*180/pi, col); hold on; grid on;
 ylabel('Roll (rad)')
 ylim(ylim + [-0.1, 0.1]);
 subplot(3,1,2);
-plot(time, aircraft_state_array(5,:), col); hold on; grid on;
+plot(time, aircraft_state_array(5,:)*180/pi, col); hold on; grid on;
 ylabel('Pitch (rad)')
 subplot(3,1,3);
-plot(time, aircraft_state_array(6,:), col); hold on; grid on;
+plot(time, aircraft_state_array(6,:)*180/pi, col); hold on; grid on;
 xlabel('Time (s)')
 ylabel('Yaw (rad)')
 sgtitle('Euler Angles');
@@ -52,13 +72,13 @@ ylim(ylim + [-0.1, 0.1]);
 % Angular Velocity
 figure(fig(4));
 subplot(3,1,1);
-plot(time, aircraft_state_array(10,:), col); hold on; grid on;
+plot(time, aircraft_state_array(10,:)*180/pi, col); hold on; grid on;
 ylabel('p (rad/s)')
 subplot(3,1,2);
-plot(time, aircraft_state_array(11,:), col); hold on; grid on;
+plot(time, aircraft_state_array(11,:)*180/pi, col); hold on; grid on;
 ylabel('q (rad/s)')
 subplot(3,1,3);
-plot(time, aircraft_state_array(12,:), col); hold on; grid on;
+plot(time, aircraft_state_array(12,:)*180/pi, col); hold on; grid on;
 ylabel('r (rad/s)')
 xlabel('Time (s)')
 sgtitle('Angular Velocity');
@@ -66,16 +86,16 @@ sgtitle('Angular Velocity');
 % Control input variables
 figure(fig(5));
 subplot(4,1,1);
-plot(time, control_input_array(1,:), col); hold on; grid on;
+plot(time, control_input_array(1,:)*180/pi, col); hold on; grid on;
 ylabel("Elevator Deflection \delta_e (deg)")
 subplot(4,1,2);
-plot(time, control_input_array(2,:), col); hold on; grid on;
+plot(time, control_input_array(2,:)*180/pi, col); hold on; grid on;
 ylabel("Aileron Deflection \delta_a (deg)")
 subplot(4,1,3);
-plot(time, control_input_array(3,:), col); hold on; grid on;
+plot(time, control_input_array(3,:)*180/pi, col); hold on; grid on;
 ylabel("Rudder Deflection \delta_r (deg)")
 subplot(4,1,4);
-plot(time, control_input_array(4,:), col); hold on; grid on;
+plot(time, control_input_array(4,:)*180/pi, col); hold on; grid on;
 ylabel("Throttle \delta_t (fraction from 0 to 1)")
 xlabel('Time (s)')
 sgtitle('Control Input Variables');
