@@ -169,6 +169,10 @@ function [aero_forces, aero_moments] = AeroForcesAndMoments(aircraft_state, airc
 %%% redefine states and inputs for ease of use
 ap = aircraft_parameters;
 
+psi = aircraft_state(4,1);
+theta = aircraft_state(5,1);
+phi = aircraft_state(6,1);
+
 p = aircraft_state(10,1);
 q = aircraft_state(11,1);
 r = aircraft_state(12,1);
