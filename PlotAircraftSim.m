@@ -15,9 +15,10 @@ aircraft_state_array: 12 x n array of aircraft states
 
 control_input_array: 4 x n array of control surfaces
 
-fig: 6 x 1 vector of figure numbers to plot over
+fig: [1;2;3;4;5;6]
 
-col: string indicating plotting option used for every plot eg. col = 'b-'
+col: string indicating plotting option used for every plot 
+eg. col = 'b-'
 
 outputs: none
 %}
