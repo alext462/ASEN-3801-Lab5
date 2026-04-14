@@ -1,0 +1,25 @@
+%% Save Task 2.1, 2.2, 2.3 Figures - just need to change the numbers of each figure
+mkdir('2.1');
+mkdir('2.2');
+mkdir('2.3');
+
+plot_names = {'Inertial', 'Angle', 'Velocity', 'Rate', 'StartToEnd', 'Forces'};
+
+% 3.5 Root Locus (figure 500)
+figure(500);
+exportgraphics(gcf, '3.5/RootLocus.png', 'Resolution', 300);
+fprintf('Saved: 3.5/RootLocus.png\n');
+
+% 3.7 Longitudinal (figures 601-606)
+for f = 1:6
+    figure(600 + f);
+    exportgraphics(gcf, sprintf('3.7/%sLongitudinal.png', plot_names{f}), 'Resolution', 300);
+    fprintf('Saved: 3.7/%sLongitudinal.png\n', plot_names{f});
+end
+
+% 3.7 Lateral (figures 701-706)
+for f = 1:6
+    figure(700 + f);
+    exportgraphics(gcf, sprintf('3.7/%sLateral.png', plot_names{f}), 'Resolution', 300);
+    fprintf('Saved: 3.7/%sLateral.png\n', plot_names{f});
+end
